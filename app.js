@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+// app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -62,9 +62,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
-var current_slide = 0;
+var current_slide = 0;  // 現在のスライド番号を保持
 
-//クライアントから接続があった時
+// クライアントから接続があった時
 io.sockets.on('connection', function (socket) {
 
   // コネクションが確立されたら'connected'メッセージを送信する

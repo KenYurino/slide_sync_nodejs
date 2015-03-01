@@ -12,7 +12,7 @@
   var s = io.connect('http://young-hollows-5254.herokuapp.com'); //heroku
   // var s = io.connect('http://localhost:3000'); //ローカル
 
-  //サーバから受け取るイベント
+  // サーバから受け取るイベント
   s.on("connect", function () {});  // 接続時
   s.on("connected", function (data) {
     addMessage(data.value);
@@ -22,7 +22,7 @@
     addMessage(data.value);
   });
 
-  //クライアントからイベント送信（イベント名は自由に設定できます）
+  // クライアントからイベント送信（イベント名は自由に設定できます）
   function sendMessage(slide_index) {
     s.emit("C_to_S_message", {value: slide_index}); //サーバへ送信
   }
@@ -31,7 +31,7 @@
     s.emit("C_to_S_broadcast", {value: slide_index}); // サーバへ送信
   }
 
-  //jqueryでメッセージを追加
+  // jqueryでメッセージを追加
   function addMessage (value,color,size) {
 	  api.goTo(value + 1);
   }
