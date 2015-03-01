@@ -62,15 +62,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-// var server = http.createServer(app);
-
-//socket.ioのインスタンス作成
-// var io = require('socket.io').listen(server);
-
-// server.listen(app.get('port'), function () {
-//   console.log("Express server listening on port " + app.get('port'));
-// });
-
 var current_slide = 0;
 
 //クライアントから接続があった時
@@ -97,7 +88,6 @@ io.sockets.on('connection', function (socket) {
   // 切断したときに送信
   socket.on("disconnect", function () {
     console.log("[disconnect] has received");
-//    io.sockets.emit("S_to_C_message", {value:"user disconnected"});
   });
 });
 

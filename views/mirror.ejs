@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
-    <title>SyncSlideTest</title>
+    <title>Slide Sync (Mirror)</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/javascripts/jquery-1.8.0.js"></script>
@@ -9,8 +9,8 @@
 
   <script type="text/javascript">
 
-//  var s = io.connect(); //リモート
-  var s = io.connect('http://young-hollows-5254.herokuapp.com'); //ローカル
+  var s = io.connect('http://young-hollows-5254.herokuapp.com'); //heroku
+  // var s = io.connect('http://localhost:3000'); //ローカル
 
   //サーバから受け取るイベント
   s.on("connect", function () {});  // 接続時
@@ -33,21 +33,20 @@
 
   //jqueryでメッセージを追加
   function addMessage (value,color,size) {
-	  // alert("addMessage:[" + value + "]");
 	  api.goTo(value + 1);
   }
 
   </script>
 
-	<link rel="stylesheet" href="css/supersized.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="stylesheets/supersized.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="theme/supersized.shutter.css" type="text/css" media="screen" />
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="javascripts/jquery.easing.min.js"></script>
 	<!--<script type="text/javascript" src="javascripts/jquery.easing.js"></script>-->
 
 	<!--<script type="text/javascript" src="javascripts/supersized.3.2.7.min.js"></script>-->
-	<script type="text/javascript" src="js/supersized.3.2.7.js"></script>
+	<script type="text/javascript" src="javascripts/supersized.3.2.7.js"></script>
 	<!--<script type="text/javascript" src="javascripts/supersized.shutter.min.js"></script>-->
 	<script type="text/javascript" src="theme/supersized.shutter.js"></script>
 
@@ -83,14 +82,14 @@
 	});
 
 </script>
+
 <style type="text/css">
 	ul#demo-block{ margin:0 15px 15px 15px; }
-		ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('img/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
+		ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('images/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
 		ul#demo-block li a{ color:#eee; font-weight:bold; }
 </style>
 
 </head>
-
 
 <body>
 	<!--Thumbnail Navigation-->
