@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>SyncSlideTest</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/javascripts/jquery-1.8.0.js"></script>
+	<script src="/javascripts/client.js"></script>
+
+  <script type="text/javascript">
+
+//  var s = io.connect(); //リモート
+  var s = io.connect('http://young-hollows-5254.herokuapp.com'); //ローカル
+
+  //サーバから受け取るイベント
+  s.on("connect", function () {});  // 接続時
+  s.on("connected", function (data) {
+    addMessage(data.value);
+  });  // 接続時
+  s.on("disconnect", function (client) {});  // 切断時
+  s.on("S_to_C_message", function (data) {
+    addMessage(data.value);
+  });
+
+  //クライアントからイベント送信（イベント名は自由に設定できます）
+  function sendMessage(slide_index) {
+    s.emit("C_to_S_message", {value: slide_index}); //サーバへ送信
+  }
+
+  function sendBroadcast(slide_index) {
+    s.emit("C_to_S_broadcast", {value: slide_index}); // サーバへ送信
+  }
+
+  //jqueryでメッセージを追加
+  function addMessage (value,color,size) {
+	  // alert("addMessage:[" + value + "]");
+	  api.goTo(value + 1);
+  }
+
+  </script>
+
+	<link rel="stylesheet" href="css/supersized.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="theme/supersized.shutter.css" type="text/css" media="screen" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+	<!--<script type="text/javascript" src="javascripts/jquery.easing.js"></script>-->
+
+	<!--<script type="text/javascript" src="javascripts/supersized.3.2.7.min.js"></script>-->
+	<script type="text/javascript" src="js/supersized.3.2.7.js"></script>
+	<!--<script type="text/javascript" src="javascripts/supersized.shutter.min.js"></script>-->
+	<script type="text/javascript" src="theme/supersized.shutter.js"></script>
+
+	<script type="text/javascript">
+
+	jQuery(function($){
+
+		$.supersized({
+
+			// Functionality
+			slide_interval          :   10000,		// Length between transitions
+			transition              :   1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+			transition_speed		:	700,		// Speed of transition
+			autoplay				:	0,			// Slideshow starts playing automatically
+			slide_links				:	1,			// Individual links for each slide (Options: false, 'num', 'name', 'blank')
+
+			// Components
+			slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
+			slides 					:  	[			// Slideshow Images
+//											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-1.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-1.jpg', title : '', thumb : '', url : ''},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-2.jpg', title : '', thumb : '', url : ''},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-3.jpg', title : '', thumb : '', url : ''},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-1.jpg', title : '', thumb : '', url : ''},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-2.jpg', title : '', thumb : '', url : ''},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-3.jpg', title : '', thumb : '', url : ''},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-1.jpg', title : '', thumb : '', url : ''},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-2.jpg', title : '', thumb : '', url : ''},
+											{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-3.jpg', title : '', thumb : '', url : ''}
+										]
+
+		});
+	});
+
+</script>
+<style type="text/css">
+	ul#demo-block{ margin:0 15px 15px 15px; }
+		ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('img/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
+		ul#demo-block li a{ color:#eee; font-weight:bold; }
+</style>
+
+</head>
+
+
+<body>
+	<!--Thumbnail Navigation-->
+	<div id="prevthumb"></div>
+	<div id="nextthumb"></div>
+</body>
+</html>
